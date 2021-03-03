@@ -76,8 +76,11 @@ func getSortedIPRanges(list []*ipRange) []*ipRange {
 
 //	Merge the ipRange. If two ipRange intersected, take the min start (From) and max end (To).
 func getMergedIPRanges(list []*ipRange) []*ipRange {
-	j := 1
 	var merged []*ipRange
+	if len(list) == 0 {
+		return merged
+	}
+	j := 1
 	currentAllow := list[0]
 	for j < len(list) {
 		finder := list[j]
