@@ -19,7 +19,7 @@ func ParseSingleWithExcepts(allowCIDR string, excepts []string) []string {
 			from = ipAdd(except.To, 1)
 		}
 	}
-	if ipToInt(from) < ipToInt(allow.To) {
+	if ipToInt(from) <= ipToInt(allow.To) {
 		finalAllows = append(finalAllows, initIPRangeFromRange(from, allow.To))
 	}
 	var result []string
